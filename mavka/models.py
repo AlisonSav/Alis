@@ -1,8 +1,8 @@
 """In the forest there is one Keeper and many creatures"""
-from django.db import models # noqa: F401
+from django.db import models
 
 
-class Forest(models.Model):
+class Forest(models.Model):  # noqa: DJ10, DJ11
     title = models.CharField(max_length=20, unique=True)
     earth = models.CharField(max_length=20)
 
@@ -10,7 +10,7 @@ class Forest(models.Model):
         return f"Forest: {self.title}, {self.earth}"
 
 
-class Keeper(models.Model):
+class Keeper(models.Model):  # noqa: DJ10, DJ11
     keeper_name = models.CharField(max_length=20)
     forest = models.OneToOneField(Forest, on_delete=models.CASCADE)
 
@@ -18,7 +18,7 @@ class Keeper(models.Model):
         return f"Keeper: {self.keeper_name}, Forest: {self.forest}"
 
 
-class Food(models.Model):
+class Food(models.Model):  # noqa: DJ10, DJ11
     food_title = models.CharField(max_length=20)
     energy = models.IntegerField(default=0)
 
@@ -26,7 +26,7 @@ class Food(models.Model):
         return f"Food: {self.food_title}"
 
 
-class Creature(models.Model):
+class Creature(models.Model):  # noqa: DJ10, DJ11
     creature_name = models.CharField(max_length=20)
     color = models.CharField(max_length=10)
     age = models.IntegerField()
