@@ -2,6 +2,9 @@ html {
     background-color: lightcyan;
 }
 h1 {
+    color: indigo;
+}
+h3 {
     color: maroon;
 }
 li a {

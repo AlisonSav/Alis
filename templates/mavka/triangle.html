@@ -1,0 +1,30 @@
+{% extends 'mavka/base.html' %}
+{% block title %} Index {% endblock title %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'mavka/style.css' %}">
+{% endblock css_additional %}
+{% block content %}
+    <form action="{% url 'triangle' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>Hello! </h1></legend>
+            {% if not gip %}
+                {% for field in form %}
+                    <div>
+                        {% if field.errors %}
+                            <p>{{ field.errors }}</p>
+                        {% endif %}
+                        <p>{{ field.label_tag }} {{ field }}</p>
+                    </div>
+                {% endfor %}
+                <input type="submit" value="Run">
+            {% else %}
+                 {{ form.errors }}
+                <h3>Triangle with catets: </h3>
+                <h3>{{ form.size_a }} and {{ form.size_b }} has Hypotenuse: {{ gip }} </h3>
+            {% endif %}
+        </fieldset>
+    </form>
+    {% include 'mavka/return_hp.html' %}
+{% endblock content %}
