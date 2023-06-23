@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 
 class TriangleForm(forms.Form):
@@ -8,13 +9,13 @@ class TriangleForm(forms.Form):
     def clean_size_a(self):
         size_a = self.cleaned_data["size_a"]
         if int(size_a) <= 0:
-            raise ValueError("OMG! Invalid size A!")
+            raise ValidationError("OMG! Invalid size A!")
         else:
             return size_a
 
     def clean_size_b(self):
         size_b = self.cleaned_data["size_b"]
         if int(size_b) <= 0:
-            raise ValueError("OMG! Invalid size B!")
+            raise ValidationError("OMG! Invalid size B!")
         else:
             return size_b
