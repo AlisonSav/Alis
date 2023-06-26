@@ -5,11 +5,10 @@
     <link rel="stylesheet" href="{% static 'mavka/style.css' %}">
 {% endblock css_additional %}
 {% block content %}
-    <form action="{% url 'triangle' %}" method="post">
+    <form action="{% url 'create_creature' %}" method="post">
         {% csrf_token %}
         <fieldset>
-            <legend><h1>Hello! </h1></legend>
-            {% if not gip %}
+            <legend><h1>Hello! Add Creature!</h1></legend>
                 {% for field in form %}
                     <div>
                         <p>{{ field.label_tag }} {{ field }}</p>
@@ -18,12 +17,8 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <input type="submit" value="Run">
-            {% else %}
-                {{ form.errors }}
-                <h3>Triangle with catets: </h3>
-                <h3>{{ form.size_a }} and {{ form.size_b }} has Hypotenuse: {{ gip }} </h3>
-            {% endif %}
+                <input type="submit" value="Create!">
+
         </fieldset>
     </form>
     {% include 'mavka/return_creatures_list.html' %}

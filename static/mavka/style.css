@@ -1,12 +1,19 @@
 html {
-    background-color: lightcyan;
+    background: url("mavka.png") no-repeat center fixed lightcyan;
 }
 h1 {
     color: indigo;
+}
+h2 {
+    color: darkred;
 }
 h3 {
     color: maroon;
 }
 li a {
     color: green;
+}
+input[type=submit] {
+  background-color: darkturquoise;
+  color: black;
 }

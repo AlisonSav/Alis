@@ -1,0 +1,20 @@
+{% extends 'mavka/base.html' %}
+{% block title %} Index {% endblock title %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'mavka/style.css' %}">
+{% endblock css_additional %}
+{% block content %}
+    <form action="{% url 'creatures_list' %}" method="GET">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h2>Creatures list: </h2></legend>
+            <ul>
+                {% for creature in creatures %}
+                    <li><a href="{% url 'creature_detail' creature.id %}">{{ creature }}</a></li>
+                {% endfor %}
+            </ul>
+        <a href="{% url 'create_creature' %}">Create Creature</a>
+        </fieldset>
+    </form>
+{% endblock content %}

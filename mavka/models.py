@@ -12,6 +12,7 @@ class Forest(models.Model):  # noqa: DJ10, DJ11
 
 class Keeper(models.Model):  # noqa: DJ10, DJ11
     keeper_name = models.CharField(max_length=20)
+    power = models.CharField(max_length=20)
     forest = models.OneToOneField(Forest, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -34,4 +35,4 @@ class Creature(models.Model):  # noqa: DJ10, DJ11
     food = models.ManyToManyField(Food)
 
     def __str__(self):
-        return f"Creature: {self.creature_name}, {self.age}, Forest: {self.forest}"
+        return f"Creature: {self.creature_name}, {self.age}, {self.color}, {self.forest}"
