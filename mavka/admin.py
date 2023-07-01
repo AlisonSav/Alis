@@ -20,6 +20,8 @@ class FoodAdmin(admin.ModelAdmin):
 @admin.register(Creature)
 class CreatureAdmin(admin.ModelAdmin):
     list_display = ("creature_name", "color", "age", "forest", "age_status")
+    filter_horizontal = ["food"]
+    search_fields = ["creature_name"]
 
     @admin.display(ordering="age", description="Status")
     def age_status(self, creature: Creature):
