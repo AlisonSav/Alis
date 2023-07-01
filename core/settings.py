@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "alisa")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
 # fmt: off
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "mavka",
 
 ]
-# fmt: on
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -49,7 +48,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    "mavka.middleware.LogMiddleware",
 ]
+# fmt: on
 
 ROOT_URLCONF = "core.urls"
 

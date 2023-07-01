@@ -1,0 +1,10 @@
+{% extends 'mavka/base.html' %}
+{% block title %} Index {% endblock title %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'mavka/style.css' %}">
+{% endblock css_additional %}
+{% block content %}
+    <h1>OMG!!!! Page not found!</h1>
+    {% include 'mavka/return_creatures_list.html' %}
+{% endblock content %}

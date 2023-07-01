@@ -21,3 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("mavka.urls")),
 ]
+
+handler404 = "mavka.views.custom_404"

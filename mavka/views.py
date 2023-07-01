@@ -37,12 +37,14 @@ def create_creature(request):
     if request.method == "POST":
         form = CreatureModelForm(request.POST)
         if form.is_valid():
-            creature = Creature.objects.create(
-                creature_name=form.cleaned_data["creature_name"],
-                color=form.cleaned_data["color"],
-                age=form.cleaned_data["age"],
-                forest=form.cleaned_data["forest"],
-            )
+            # creature = Creature.objects.create(
+            #     creature_name=form.cleaned_data["creature_name"],
+            #     color=form.cleaned_data["color"],
+            #     age=form.cleaned_data["age"],
+            #     forest=form.cleaned_data["forest"],
+            #     food=form.cleaned_data["food"],
+            # )
+            creature = form.save()
             return redirect(reverse("creature_detail", args=(creature.id,)))
     else:
         form = CreatureModelForm()
@@ -67,3 +69,7 @@ def update_creature(request, pk):
     else:
         form = CreatureModelForm(instance=creature)
     return render(request, "mavka/update_creature.html", {"form": form, "creature": creature})
+
+
+def custom_404(request, exception):
+    return render(request, "exceptions/404.html")
