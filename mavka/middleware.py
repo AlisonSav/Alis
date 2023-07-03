@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from django.urls import reverse
+
 from .models import LogModel
 
 
@@ -9,7 +12,7 @@ class LogMiddleware:
     def __call__(self, request):
         created_at = datetime.utcnow()
         response = self.get_response(request)
-        if not request.path.startswith("/admin"):
+        if not request.path.startswith(reverse("admin:index")):
             print(
                 f"Path - {request.path}, method - {request.method}, body - {request.POST}, "
                 f"query - {request.GET}, request - {request.__dict__}"
